@@ -1,5 +1,22 @@
 # TrabalhoDevOps
 
+## Instalação do chart no ambiente local
+Para realizar a instalação do chart basta clonar este repositório e executar o comando <code>helm install nome-da-release . --namespace nome-do-namespace --create-namespace</code> na raiz do chart. Em seguida basta fazer um port-forward do service
+
+```
+kubectl port-forward <nome do service> 8080:8080 -n <nome-do-namespace>
+```
+e consumir os endpoints disponíveis e/ou acessar a interface gráfica do banco H2
+
+### Valores padrão das variáveis de ambiente 
+Estes são os valores padrão das variáveis de ambiente, e podem ser modificadas nas propriedades "confimap" e "secret" do values.yaml
+```
+DATABASE_NAME: banco
+DATABASE_USERNAME: user
+DATABASE_PASSWORD: password
+H2_CONSOLE_PATH: /h2
+```
+
 ## Passo 1: Desenvolvimento de uma Aplicação TODO List
 A aplicação é uma API RESTful desenvolvida com SpringBoot e banco de dados em memória H2. A API também conta com uma interface gráfica para acessar o banco H2
 
@@ -71,20 +88,3 @@ O hpa.yaml foi gerado pelo Helm, e seus parâmetros foram injetados através do 
 
 ### Dependências
 Para que o hpa possa coletar informações de uso de memória e cpu dos pods é necessário que o metrics-server esteja sendo executado no cluster. O chart criado já conta com o metrics-server como uma dependêcia
-
-## Instalação do chart no ambiente local
-Para realizar a instalação do chart basta clonar este repositório e executar o comando <code>helm install nome-da-release .</code> na raiz do chart. Em seguida basta fazer um port-forward
-
-```
-kubectl port-foward service/<nome do service> 8080:8080
-```
-e consumir os endpoints disponíveis e/ou acessar a interface gráfica do banco H2
-
-### Valores padrão das variáveis de ambiente 
-Estes são os valores padrão das variáveis de ambiente, e podem ser modificadas nas propriedades "confimap" e "secret" do values.yaml
-```
-DATABASE_NAME: banco
-DATABASE_USERNAME: user
-DATABASE_PASSWORD: password
-H2_CONSOLE_PATH: /h2
-```
