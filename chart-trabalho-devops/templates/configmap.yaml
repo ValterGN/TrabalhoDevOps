@@ -1,0 +1,8 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "chart-trabalho-devops.fullname" . }}
+data:
+  DATABASE-NAME: {{ .Values.configmap.dbName }}
+  DATABASE-USERNAME: {{ .Values.configmap.dbUser }}
+  H2-CONSOLE-PATH: {{ .Values.configmap.h2Path }}
