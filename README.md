@@ -4,7 +4,7 @@
 Para realizar a instalação do chart basta clonar este repositório e executar o comando <code>helm install nome-da-release chart-trabalho-devops --namespace nome-do-namespace --create-namespace</code> na raiz do chart. Em seguida basta fazer um port-forward do service
 
 ```
-kubectl port-forward <nome do service> 8080:8080 -n <nome-do-namespace>
+kubectl port-forward service/<nome do service> 8080:8080 -n <nome-do-namespace>
 ```
 e consumir os endpoints disponíveis e/ou acessar a interface gráfica do banco H2
 
