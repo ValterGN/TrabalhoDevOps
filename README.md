@@ -11,10 +11,14 @@ e consumir os endpoints disponíveis e/ou acessar a interface gráfica do banco 
 ### Valores padrão das variáveis de ambiente 
 Estes são os valores padrão das variáveis de ambiente, e podem ser modificadas nas propriedades "confimap" e "secret" do values.yaml
 ```
-DATABASE_NAME: banco
-DATABASE_USERNAME: user
-DATABASE_PASSWORD: password
-H2_CONSOLE_PATH: /h2
+configmap:
+  H2_CONSOLE_PATH: /h2
+  DATABASE_NAME: banco
+  DATABASE_USERNAME: user
+
+secret:
+  DATABASE_PASSWORD: password
+
 ```
 
 ## Passo 1: Desenvolvimento de uma Aplicação TODO List
